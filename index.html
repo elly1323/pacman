@@ -38,6 +38,9 @@
 
         this.current = Phaser.NONE;
         this.turning = Phaser.NONE;
+        
+        this.score = 0;
+        this.scoreText = '';
 
     };
 
@@ -101,6 +104,8 @@
 
             this.pacman.play('munch');
             this.move(Phaser.LEFT);
+            
+            this.scoreText = game.add.text(0, 500, 'Score: 0', { fontSize: '20px Arial', fill: 'white' });
 
         },
 
