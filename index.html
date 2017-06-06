@@ -39,11 +39,11 @@
         this.current = Phaser.NONE;
         this.turning = Phaser.NONE;
         
-        this.score = 0;
-        this.scoreText = '';
+        this.points = 0;
+        this.pointsText = '';
         
-        this.bonus = 0;
-        this.bonusText = '';
+        this.big = 0;
+        this.bigText = '';
         
     };
 
@@ -118,9 +118,9 @@
             this.pacman.play('munch');
             this.move(Phaser.LEFT);
             
-            this.scoreText = game.add.text(0, 500, 'Score: 0', { fontSize: '20px Verdana', fill: 'white' });
+            this.pointsText = game.add.text(0, 500, 'Points: 0', { fontSize: '20px Verdana', fill: 'white' });
 		
-            this.bonusText = game.add.text(300, 500, 'Bonus: 0', { fontSize: '20px Verdana', fill: 'white' });
+            this.bigText = game.add.text(300, 500, 'Boost: 0', { fontSize: '20px Verdana', fill: 'white' });
                        
         },
 
@@ -250,11 +250,11 @@
                 this.dots.callAll('revive');
             }
         },
-        eatBonus: function (pacman, extra) {
+        eatBig: function (pacman, extra) {
             extra.kill();
             
-            this.bonus += 5;
-            this.bonusText.text = 'Bonus:' + this.bonus;
+            this.big += 5;
+            this.bigText.text = 'Boost:' + this.big;
         
             if(this.extra.total===0){
            	 this.extra.callAll('revive');
@@ -267,7 +267,7 @@
           
             this.physics.arcade.collide(this.pacman, this.layer);
             this.physics.arcade.overlap(this.pacman, this.dots, this.eatDot, null, this);
-            this.physics.arcade.overlap(this.pacman, this.extra, this.eatBonus, null, this);
+            this.physics.arcade.overlap(this.pacman, this.extra, this.eatBig, null, this);
 
             
             this.marker.x = this.math.snapToFloor(Math.floor(this.pacman.x), this.gridsize) / this.gridsize;
