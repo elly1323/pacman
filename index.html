@@ -257,6 +257,9 @@
         eatBig: function (pacman, extra) {
 		
             extra.kill();
+		
+	    var audio = new Audio('assets/extra.mp3');
+            audio.play()
             
             this.big += 5;
             this.bigText.text = 'Boost:' + this.big;
