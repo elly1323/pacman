@@ -250,14 +250,17 @@
                 this.dots.callAll('revive');
             }
         },
+	    
         eatBig: function (pacman, extra) {
+		
             extra.kill();
             
             this.big += 5;
             this.bigText.text = 'Boost:' + this.big;
         
-            if(this.extra.total===0){
-           	 this.extra.callAll('revive');
+            if(this.extra.total===0)
+	    {
+           	 this.\.callAll('revive');
             }
 
         },
